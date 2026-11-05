@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Miellerie de Provence · Welke douceur ben jij?</title>
+<meta name="description" content="Vier parfums, geboren uit Provençaalse honing. Doe de geurtest en maak kans op een proefflacon van jouw geur.">
+<meta property="og:title" content="Miellerie de Provence">
+<meta property="og:description" content="Zoet als een zomeravond in de Provence. Welke douceur ben jij?">
+<meta property="og:image" content="img/groep-breed.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root{
+  --mauve:#A86B94; --mauve-donker:#8A4F78; --pruim:#4A2340; --pruim-diep:#331729;
+  --honing:#D9A54A; --blush:#EED9E2; --creme:#FBF5EE; --salie:#6E7550;
+  --serif:"DM Serif Display", Georgia, serif; --sans:"DM Sans", system-ui, sans-serif;
+  --boog: 999px 999px 0 0;               /* het Provençaalse boograam */
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--creme);color:var(--pruim);font:400 1.0625rem/1.65 var(--sans);-webkit-font-smoothing:antialiased}
+img,video{display:block;max-width:100%;height:auto}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--honing);outline-offset:3px}
+.wrap{width:min(1160px,100% - 2rem);margin-inline:auto}
+h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1.05;margin:0}
+h2{font-size:clamp(2.2rem,4.5vw,3.6rem)}
+p{margin:0 0 1em;max-width:60ch}
+
+/* knoppen */
+.knop{display:inline-block;font:700 1rem/1 var(--sans);text-decoration:none;cursor:pointer;
+  padding:1.05rem 1.8rem;border-radius:999px;border:0;background:var(--honing);color:var(--pruim-diep);transition:background .2s}
+.knop:hover{background:#E8B964}
+.knop--mauve{background:var(--mauve);color:#fff}
+.knop--mauve:hover{background:var(--mauve-donker)}
+
+/* kop */
+.kop{position:absolute;inset:0 0 auto;z-index:5;padding:1.4rem 0}
+.kop .wrap{display:flex;justify-content:space-between;align-items:center}
+.merk{font-family:var(--serif);font-size:1.6rem;color:var(--creme);text-decoration:none;line-height:1}
+.merk small{display:block;font:500 .7rem/1.4 var(--sans);letter-spacing:.32em;opacity:.8;margin-top:.2rem}
+.kop a.link{color:var(--creme);font-weight:500;text-underline-offset:.3em}
+
+/* hero */
+.hero{background:var(--pruim);color:var(--creme);padding:8rem 0 0;overflow:hidden;position:relative}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:3rem;align-items:end}
+.hero h1{font-size:clamp(3rem,7.4vw,6.6rem);letter-spacing:-.01em;margin-bottom:1.6rem}
+.hero h1 em{font-style:italic;color:var(--honing)}
+.hero .tekst{padding-bottom:6rem}
+.hero .tekst p{font-size:1.2rem;opacity:.9;max-width:34ch;margin-bottom:2.2rem}
+.raam{border-radius:var(--boog);overflow:hidden;aspect-ratio:3/4;background:#222;box-shadow:0 0 0 10px var(--pruim-diep),0 0 0 11px rgba(217,165,74,.55)}
+.raam img{width:100%;height:100%;object-fit:cover}
+.hero .raam{margin-top:1rem;aspect-ratio:1/1.12}
+.hero .raam img{object-position:50% 70%}
+@media (prefers-reduced-motion:no-preference){
+  .hero .raam{animation:op 1.4s cubic-bezier(.2,.7,.2,1) both}
+  .hero h1,.hero .tekst p,.hero .knop{animation:in 1s .2s cubic-bezier(.2,.7,.2,1) both}
+  .hero .tekst p{animation-delay:.35s}.hero .knop{animation-delay:.5s}
+  @keyframes op{from{transform:translateY(12%);opacity:0}}
+  @keyframes in{from{transform:translateY(14px);opacity:0}}
+}
+
+/* verhaal */
+.verhaal{padding:7rem 0}
+.verhaal .wrap{display:grid;grid-template-columns:5fr 7fr;gap:4rem;align-items:center}
+.verhaal h2{margin-bottom:1.5rem}
+.verhaal .lead{font-family:var(--serif);font-size:1.55rem;line-height:1.4;max-width:30ch}
+.band{border-radius:28px;overflow:hidden}
+.band img{width:100%;aspect-ratio:16/9;object-fit:cover}
+.honing-maanden{display:flex;gap:2rem;margin:2rem 0 0;padding:0;list-style:none;flex-wrap:wrap}
+.honing-maanden li{font-size:.95rem}
+.honing-maanden b{display:block;font:italic 400 1.35rem/1.2 var(--serif)}
+
+/* geuren */
+.geuren{background:var(--blush);padding:7rem 0}
+.geuren header{display:flex;justify-content:space-between;align-items:end;gap:2rem;flex-wrap:wrap;margin-bottom:3.5rem}
+.geuren header p{max-width:38ch;margin:0}
+.rij{display:grid;grid-template-columns:repeat(4,1fr);gap:1.6rem}
+.geur .raam{box-shadow:none;aspect-ratio:3/4.2}
+.geur h3{font-style:italic;font-size:1.8rem;margin:1.2rem 0 .2rem}
+.geur .wie{font-weight:700;margin:0 0 .4rem}
+.geur .noten{font-size:.95rem;margin:0;opacity:.85}
+.geur[data-g=ambre] h3{color:#8C6418}.geur[data-g=iris] h3{color:var(--mauve-donker)}
+.geur[data-g=sauge] h3{color:var(--salie)}.geur[data-g=nuit] h3{color:var(--pruim)}
+
+/* test */
+.test{padding:7rem 0;background:var(--creme)}
+.test .wrap{max-width:900px}
+.test h2{text-align:center;margin-bottom:.6rem}
+.test .intro{text-align:center;margin:0 auto 3rem}
+.kaart{background:#fff;border-radius:28px;padding:clamp(1.5rem,4vw,3rem);border:1px solid rgba(74,35,64,.12)}
+.stap{font-size:.95rem;color:var(--mauve-donker);font-weight:500;margin:0 0 .4rem}
+.vraag{font-family:var(--serif);font-size:clamp(1.7rem,3.5vw,2.4rem);margin:0 0 1.6rem}
+.opties{display:grid;grid-template-columns:1fr 1fr;gap:.9rem}
+.opties button{font:500 1.02rem/1.35 var(--sans);text-align:left;color:var(--pruim);cursor:pointer;
+  background:var(--creme);border:1.5px solid rgba(74,35,64,.18);border-radius:16px;padding:1.1rem 1.2rem;transition:border-color .15s,background .15s}
+.opties button:hover{border-color:var(--mauve);background:#fff}
+.voortgang{display:flex;gap:.4rem;margin-top:2rem}
+.voortgang span{height:4px;flex:1;border-radius:4px;background:var(--blush)}
+.voortgang span.aan{background:var(--mauve)}
+.resultaat{display:grid;grid-template-columns:240px 1fr;gap:2.5rem;align-items:center}
+.resultaat .raam{box-shadow:none}
+.resultaat h3{font-size:clamp(2.2rem,4vw,3rem);margin:.2rem 0 1rem}
+.resultaat h3 em{font-style:italic}
+.opnieuw{background:none;border:0;padding:0;margin-left:1.2rem;font:500 1rem var(--sans);color:var(--pruim);text-decoration:underline;text-underline-offset:.3em;cursor:pointer}
+[hidden]{display:none!important}
+
+/* inschrijven */
+.inschrijven{background:var(--pruim);color:var(--creme);padding:7rem 0}
+.inschrijven .wrap{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.inschrijven h2{margin-bottom:1.2rem}
+.inschrijven .jouw-geur{font-family:var(--serif);font-style:italic;color:var(--honing);font-size:1.4rem;min-height:1.4em}
+form{display:grid;gap:1.1rem}
+label{font-weight:500;font-size:.95rem}
+input[type=text],input[type=email]{width:100%;margin-top:.35rem;font:400 1.05rem var(--sans);color:var(--pruim);
+  padding:.95rem 1.1rem;border-radius:14px;border:0;background:var(--creme)}
+.optin{display:flex;gap:.8rem;align-items:flex-start;font-weight:400}
+.optin input{width:1.25rem;height:1.25rem;margin-top:.2rem;accent-color:var(--honing);flex:none}
+.klein{font-size:.85rem;opacity:.75;margin:0}
+.melding{border-radius:14px;padding:1rem 1.2rem;background:rgba(217,165,74,.16);border:1px solid rgba(217,165,74,.5)}
+.fout{color:#FFD7D7;font-size:.9rem;margin:0}
+
+/* voet */
+.voet{background:var(--pruim-diep);color:var(--creme);padding:3rem 0;font-size:.9rem}
+.voet .wrap{display:flex;justify-content:space-between;gap:2rem;flex-wrap:wrap}
+.voet p{margin:0;opacity:.8}
+
+@media (max-width:900px){
+  .hero{padding-top:6.5rem}
+  .hero .wrap,.verhaal .wrap,.inschrijven .wrap{grid-template-columns:1fr;gap:2.5rem}
+  .hero .tekst{padding-bottom:0}
+  .hero .raam{width:min(420px,85%);margin-inline:auto}
+  .rij{grid-template-columns:1fr 1fr}
+  .resultaat{grid-template-columns:1fr;text-align:left}
+  .resultaat .raam{width:200px}
+  .verhaal,.geuren,.test,.inschrijven{padding:5rem 0}
+}
+@media (max-width:560px){.opties{grid-template-columns:1fr}.rij{gap:1rem}.geur h3{font-size:1.4rem}}
+</style>
+</head>
+<body>
+
+<header class="kop">
+  <div class="wrap">
+    <a class="merk" href="#">Miellerie<small>DE PROVENCE</small></a>
+    <a class="link" href="#test">Doe de geurtest</a>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="wrap">
+    <div class="tekst">
+      <h1>Zoet als een zomeravond in de <em>Provence.</em></h1>
+      <p>Vier parfums, geboren uit Provençaalse honing. Eén ervan is helemaal jij.</p>
+      <a class="knop" href="#test">Doe de geurtest</a>
+    </div>
+    <div class="raam"><img src="img/groep-vierkant.jpg" alt="De vier parfums van Miellerie de Provence naast elkaar: Iris Poudré, Sauge &amp; Lavande, Nuit de Miel en Ambre Doré" width="1200" height="1200"></div>
+  </div>
+</section>
+
+<section class="verhaal" id="verhaal">
+  <div class="wrap">
+    <div>
+      <h2>Van de bijenkorf naar je huid</h2>
+      <p class="lead">In de heuvels van de Provence maken bijen al eeuwen de zoetste honing van Frankrijk.</p>
+      <p>Elke honing heeft een eigen karakter. Miellerie de Provence vangt dat karakter in een flesje. Geen frisse geurtjes voor elke dag, maar warme, zoete parfums voor de momenten die je wilt onthouden. Voor jezelf, omdat je het waard bent.</p>
+      <ul class="honing-maanden">
+        <li><b>Acacia</b>in de lente</li>
+        <li><b>Lavendel</b>in juli</li>
+        <li><b>Kastanje</b>in de herfst</li>
+      </ul>
+    </div>
+    <div class="band">
+      <!-- Vervang door de Firefly-video zodra die klaar is:
+      <video src="video/miellerie.mp4" autoplay muted loop playsinline poster="img/groep-breed.jpg"></video> -->
+      <img src="img/groep-breed.jpg" alt="Ambre Doré, Iris Poudré, Sauge &amp; Lavande en Nuit de Miel op een rij" width="2000" height="1117" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<section class="geuren" id="geuren">
+  <div class="wrap">
+    <header>
+      <h2>Vier geuren, vier karakters</h2>
+      <p>Elke geur vertrekt van een andere honing. Welke past bij jou? De test vertelt het je in drie vragen.</p>
+    </header>
+    <div class="rij">
+      <article class="geur" data-g="ambre">
+        <div class="raam"><img src="img/ambre.jpg" alt="Fles Ambre Doré" loading="lazy" width="800" height="1025"></div>
+        <h3>Ambre Doré</h3><p class="wie">De genieter</p><p class="noten">Honing, amber en vanille. Voor wie elk moment laat duren.</p>
+      </article>
+      <article class="geur" data-g="iris">
+        <div class="raam"><img src="img/iris.jpg" alt="Fles Iris Poudré" loading="lazy" width="800" height="1025"></div>
+        <h3>Iris Poudré</h3><p class="wie">De romanticus</p><p class="noten">Iris, viooltje en lavendelhoning. Voor wie nog liefdesbrieven schrijft.</p>
+      </article>
+      <article class="geur" data-g="sauge">
+        <div class="raam"><img src="img/sauge.jpg" alt="Fles Sauge &amp; Lavande" loading="lazy" width="800" height="1025"></div>
+        <h3>Sauge &amp; Lavande</h3><p class="wie">De dromer</p><p class="noten">Salie, lavendel en acaciahoning. Een lavendelveld in je handtas.</p>
+      </article>
+      <article class="geur" data-g="nuit">
+        <div class="raam"><img src="img/nuit.jpg" alt="Fles Nuit de Miel" loading="lazy" width="800" height="1025"></div>
+        <h3>Nuit de Miel</h3><p class="wie">De verleider</p><p class="noten">Kastanjehoning, oud en zwarte roos. Voor kaarslicht en late uren.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="test" id="test" aria-live="polite">
+  <div class="wrap">
+    <h2>Welke douceur ben jij?</h2>
+    <p class="intro">Drie vragen, en je weet welke geur bij je past.</p>
+    <div class="kaart">
+      <div id="vraagblok">
+        <p class="stap" id="stap">Vraag 1 van 3</p>
+        <p class="vraag" id="vraag"></p>
+        <div class="opties" id="opties"></div>
+        <div class="voortgang" aria-hidden="true"><span></span><span></span><span></span></div>
+      </div>
+      <div class="resultaat" id="resultaat" hidden>
+        <div class="raam"><img id="res-img" src="" alt=""></div>
+        <div>
+          <p class="stap">Jouw resultaat</p>
+          <h3>Jij bent <span id="res-wie"></span>. Jouw geur is <em id="res-geur"></em>.</h3>
+          <p id="res-tekst"></p>
+          <a class="knop knop--mauve" href="#inschrijven">Maak kans op een proefflacon</a>
+          <button class="opnieuw" id="opnieuw" type="button">Test opnieuw doen</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="inschrijven" id="inschrijven">
+  <div class="wrap">
+    <div>
+      <h2>Proef als eerste</h2>
+      <p>Schrijf je in voor onze nieuwsbrief en maak kans op een proefflacon van jouw geur. Je hoort als eerste wanneer Miellerie de Provence te koop is.</p>
+      <p class="jouw-geur" id="jouw-geur"></p>
+    </div>
+    <div>
+      <form id="form" novalidate>
+        <label>Voornaam<input type="text" name="fields[name]" id="naam" autocomplete="given-name" required></label>
+        <label>E-mailadres<input type="email" name="fields[email]" id="email" autocomplete="email" required></label>
+        <input type="hidden" name="fields[geur]" id="veld-geur">
+        <input type="hidden" name="fields[persoonlijkheid]" id="veld-wie">
+        <input type="hidden" name="ml-submit" value="1">
+        <input type="hidden" name="anticsrf" value="true">
+        <label class="optin"><input type="checkbox" id="optin" required>
+          <span>Ja, ik wil de nieuwsbrief van Miellerie de Provence ontvangen. Ik kan me op elk moment uitschrijven.</span></label>
+        <p class="fout" id="fout" hidden></p>
+        <div><button class="knop" type="submit">Schrijf me in</button></div>
+        <p class="klein">We gebruiken je voornaam, e-mailadres en testresultaat alleen om je de nieuwsbrief te sturen. Nooit doorverkocht. Dit is een fictief merk voor een schoolopdracht.</p>
+      </form>
+      <div class="melding" id="bedankt" hidden>
+        <p style="font-family:var(--serif);font-size:1.6rem;margin:0 0 .4rem">Merci, <span id="bedankt-naam"></span>.</p>
+        <p style="margin:0">Je bent ingeschreven. Kijk in je mailbox: je eerste brief van Miellerie is onderweg.</p>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="voet">
+  <div class="wrap">
+    <p>Miellerie de Provence. Zoet als een zomeravond in de Provence.</p>
+    <p>Fictief merk voor Creative Automation, Arteveldehogeschool, 2026.</p>
+  </div>
+</footer>
+
+<script>
+// MailerLite: vul hier je account-ID en formulier-ID in (uit de embed-code van je formulier)
+const MAILERLITE = { account: "2771793", form: "203309732812818195" };
+
+const GEUREN = {
+  ambre: { naam: "Ambre Doré", wie: "de genieter", img: "img/ambre.jpg", tekst: "Warme honing, amber en vanille. Jij weet als geen ander hoe je een moment laat duren." },
+  iris:  { naam: "Iris Poudré", wie: "de romanticus", img: "img/iris.jpg", tekst: "Poederige iris, viooltje en lavendelhoning. Teder, zoals een brief die je met de hand schrijft." },
+  sauge: { naam: "Sauge & Lavande", wie: "de dromer", img: "img/sauge.jpg", tekst: "Salie, lavendel en acaciahoning. Een zomerveld in de Provence, altijd binnen handbereik." },
+  nuit:  { naam: "Nuit de Miel", wie: "de verleider", img: "img/nuit.jpg", tekst: "Kastanjehoning, oud en zwarte roos. Een geur die pas echt begint als de lichten dimmen." }
+};
+const VRAGEN = [
+  { v: "Je ideale avond?", o: [
+    ["Lang tafelen, met een goed glas en een dessert", "ambre"],
+    ["Een picknick bij zonsondergang met iemand speciaal", "iris"],
+    ["Een boek in de tuin tot de sterren verschijnen", "sauge"],
+    ["Een bar met gedimd licht en een donkere cocktail", "nuit"]]},
+  { v: "Welk dessert bestel je?", o: [
+    ["Crème brûlée", "ambre"], ["Macarons met viooltjes", "iris"],
+    ["Lavendelijs met honing", "sauge"], ["Pure chocolade met een snuifje zeezout", "nuit"]]},
+  { v: "Wat zeggen anderen over jou?", o: [
+    ["“Jij weet hoe je moet genieten.”", "ambre"], ["“Jij bent een hopeloze romanticus.”", "iris"],
+    ["“Jij bent altijd een beetje aan het dagdromen.”", "sauge"], ["“Jij bent een mysterie.”", "nuit"]]}
+];
+
+const $ = id => document.getElementById(id);
+let stap = 0, punten = {}, laatste = null;
+
+function toonVraag() {
+  const q = VRAGEN[stap];
+  $("stap").textContent = `Vraag ${stap + 1} van ${VRAGEN.length}`;
+  $("vraag").textContent = q.v;
+  $("opties").innerHTML = "";
+  q.o.forEach(([tekst, geur]) => {
+    const b = document.createElement("button");
+    b.type = "button"; b.textContent = tekst;
+    b.onclick = () => kies(geur);
+    $("opties").appendChild(b);
+  });
+  document.querySelectorAll(".voortgang span").forEach((s, i) => s.classList.toggle("aan", i <= stap));
+}
+function kies(geur) {
+  punten[geur] = (punten[geur] || 0) + 1; laatste = geur;
+  stap++;
+  if (stap < VRAGEN.length) { toonVraag(); $("opties").firstChild.focus(); }
+  else toonResultaat();
+}
+function toonResultaat() {
+  // meeste punten wint, bij gelijkspel telt het antwoord op de laatste vraag
+  const max = Math.max(...Object.values(punten));
+  const winnaar = punten[laatste] === max ? laatste : Object.keys(punten).find(k => punten[k] === max);
+  const g = GEUREN[winnaar];
+  $("res-img").src = g.img; $("res-img").alt = "Fles " + g.naam;
+  $("res-wie").textContent = g.wie; $("res-geur").textContent = g.naam; $("res-tekst").textContent = g.tekst;
+  $("vraagblok").hidden = true; $("resultaat").hidden = false;
+  $("veld-geur").value = g.naam; $("veld-wie").value = g.wie;
+  $("jouw-geur").textContent = `Jouw geur: ${g.naam}`;
+  try { localStorage.setItem("miellerie-geur", winnaar); } catch (e) {}
+}
+$("opnieuw").onclick = () => { stap = 0; punten = {}; $("resultaat").hidden = true; $("vraagblok").hidden = false; toonVraag(); };
+toonVraag();
+
+$("form").addEventListener("submit", async e => {
+  e.preventDefault();
+  const fout = $("fout"); fout.hidden = true;
+  const naam = $("naam").value.trim(), email = $("email").value.trim();
+  if (!naam) return toonFout("Vul je voornaam in.");
+  if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) return toonFout("Vul een geldig e-mailadres in, bijvoorbeeld naam@voorbeeld.be.");
+  if (!$("optin").checked) return toonFout("Vink het vakje aan om de nieuwsbrief te ontvangen.");
+  if (MAILERLITE.account && MAILERLITE.form) {
+    try {
+      await fetch(`https://assets.mailerlite.com/jsonp/${MAILERLITE.account}/forms/${MAILERLITE.form}/subscribe`,
+        { method: "POST", body: new FormData(e.target), mode: "no-cors" });
+    } catch (err) { return toonFout("Inschrijven lukte niet. Controleer je internetverbinding en probeer opnieuw."); }
+  }
+  $("bedankt-naam").textContent = naam;
+  e.target.hidden = true; $("bedankt").hidden = false;
+});
+function toonFout(t) { $("fout").textContent = t; $("fout").hidden = false; }
+</script>
+</body>
+</html>
