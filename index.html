@@ -68,7 +68,7 @@ p{margin:0 0 1em;max-width:60ch}
 .verhaal h2{margin-bottom:1.5rem}
 .verhaal .lead{font-family:var(--serif);font-size:1.55rem;line-height:1.4;max-width:30ch}
 .band{border-radius:28px;overflow:hidden}
-.band img{width:100%;aspect-ratio:16/9;object-fit:cover}
+.band img,.band video{width:100%;aspect-ratio:16/9;object-fit:cover;display:block}
 .honing-maanden{display:flex;gap:2rem;margin:2rem 0 0;padding:0;list-style:none;flex-wrap:wrap}
 .honing-maanden li{font-size:.95rem}
 .honing-maanden b{display:block;font:italic 400 1.35rem/1.2 var(--serif)}
@@ -174,9 +174,8 @@ input[type=text],input[type=email]{width:100%;margin-top:.35rem;font:400 1.05rem
       </ul>
     </div>
     <div class="band">
-      <!-- Vervang door de Firefly-video zodra die klaar is:
-      <video src="video/miellerie.mp4" autoplay muted loop playsinline poster="img/groep-breed.jpg"></video> -->
-      <img src="img/groep-breed.jpg" alt="Ambre Doré, Iris Poudré, Sauge &amp; Lavande en Nuit de Miel op een rij" width="2000" height="1117" loading="lazy">
+      <video src="video/miellerie.mp4" poster="img/verhaal-honing.jpg" autoplay muted loop playsinline preload="metadata"
+        aria-label="Video: de vier parfums van Miellerie de Provence, elk in hun eigen sfeer, gemaakt met Adobe Firefly"></video>
     </div>
   </div>
 </section>
@@ -189,19 +188,19 @@ input[type=text],input[type=email]{width:100%;margin-top:.35rem;font:400 1.05rem
     </header>
     <div class="rij">
       <article class="geur" data-g="ambre">
-        <div class="raam"><img src="img/ambre.jpg" alt="Fles Ambre Doré" loading="lazy" width="800" height="1025"></div>
+        <div class="raam"><img src="img/ambre.jpg" alt="Fles Ambre Doré in warm zonlicht op een stenen tafel" loading="lazy" width="800" height="1025"></div>
         <h3>Ambre Doré</h3><p class="wie">De genieter</p><p class="noten">Honing, amber en vanille. Voor wie elk moment laat duren.</p>
       </article>
       <article class="geur" data-g="iris">
-        <div class="raam"><img src="img/iris.jpg" alt="Fles Iris Poudré" loading="lazy" width="800" height="1025"></div>
+        <div class="raam"><img src="img/iris.jpg" alt="Fles Iris Poudré op mauve zijde met rozenblaadjes" loading="lazy" width="800" height="1025"></div>
         <h3>Iris Poudré</h3><p class="wie">De romanticus</p><p class="noten">Iris, viooltje en lavendelhoning. Voor wie nog liefdesbrieven schrijft.</p>
       </article>
       <article class="geur" data-g="sauge">
-        <div class="raam"><img src="img/sauge.jpg" alt="Fles Sauge &amp; Lavande" loading="lazy" width="800" height="1025"></div>
+        <div class="raam"><img src="img/sauge.jpg" alt="Fles Sauge &amp; Lavande op een stenen rand voor een lavendelveld" loading="lazy" width="800" height="1025"></div>
         <h3>Sauge &amp; Lavande</h3><p class="wie">De dromer</p><p class="noten">Salie, lavendel en acaciahoning. Een lavendelveld in je handtas.</p>
       </article>
       <article class="geur" data-g="nuit">
-        <div class="raam"><img src="img/nuit.jpg" alt="Fles Nuit de Miel" loading="lazy" width="800" height="1025"></div>
+        <div class="raam"><img src="img/nuit.jpg" alt="Fles Nuit de Miel op pruimkleurig fluweel bij kaarslicht" loading="lazy" width="800" height="1025"></div>
         <h3>Nuit de Miel</h3><p class="wie">De verleider</p><p class="noten">Kastanjehoning, oud en zwarte roos. Voor kaarslicht en late uren.</p>
       </article>
     </div>
